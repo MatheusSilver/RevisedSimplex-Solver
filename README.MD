@@ -5,7 +5,7 @@ Exercício programa desenvolvido por Matheus Silveira Feitosa, email: matheus.fe
 
 ## Índice 
 
-- [Título e Autores](#Simplex Revisado)
+- [Título e Autores](#simplex-revisado)
 - [Índice](#índice)
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Como Executar o Programa](#como-executar-o-programa)
