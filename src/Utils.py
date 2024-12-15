@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 
 class FormatUtils:
@@ -66,3 +68,16 @@ class FormatUtils:
                     clearedFile.append(line)
 
         return clearedFile
+
+class FileUtils:
+    @staticmethod
+    def get_files(directory: str) -> list:
+        try:
+            files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+            if not files:
+                print(self.__translate("No files available to solve."))
+            return files
+        except FileNotFoundError:
+            # todo: Implementar o método de tradutor com duas partes uma pra garantir que existe e a outra
+            # directory not exists
+            return []
