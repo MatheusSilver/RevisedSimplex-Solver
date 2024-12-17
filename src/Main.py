@@ -1,16 +1,10 @@
 import os
+
+from src import Constants
 from src.UserInterface import UI
-
-DATA_INPUT = "../data/input"
-
-DATA_OUTPUT = "../data/output"
 
 
 class Main:
-
-    data_input = DATA_INPUT
-    data_output = DATA_OUTPUT
-
     @staticmethod
     def setup():
         Main.__check_directory()
@@ -31,16 +25,16 @@ x, y >= 0"""
         example_file = "example.txt"
 
 
-        if not os.path.exists(DATA_OUTPUT):
-            os.makedirs(DATA_OUTPUT)
+        if not os.path.exists(Constants.DATA_OUTPUT):
+            os.makedirs(Constants.DATA_OUTPUT)
 
 
-        if not os.path.exists(DATA_INPUT):
-            os.makedirs(DATA_INPUT)
+        if not os.path.exists(Constants.DATA_INPUT):
+            os.makedirs(Constants.DATA_INPUT)
 
 
-        if not any(os.scandir(DATA_INPUT)):
-            example_file_path = os.path.join(DATA_INPUT, example_file)
+        if not any(os.scandir(Constants.DATA_INPUT)):
+            example_file_path = os.path.join(Constants.DATA_INPUT, example_file)
             with open(example_file_path, "x") as file:
                 file.write(default_problem)
                 file.close()

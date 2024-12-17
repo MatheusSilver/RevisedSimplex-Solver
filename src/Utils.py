@@ -2,6 +2,9 @@ import os
 
 import numpy as np
 
+from src.LanguageDictionary import LanguageDictionary
+
+
 class FormatUtils:
     SPECIAL_SIMBOLS = ["<=", ">=", "=", "+", "-"]
 
@@ -68,6 +71,16 @@ class FormatUtils:
                     clearedFile.append(line)
 
         return clearedFile
+
+class LanguageUtils:
+
+    @staticmethod
+    def print_translated(key: str, language: str) -> None:
+        print(LanguageUtils.get_translated_text(key, language))
+
+    @staticmethod
+    def get_translated_text(key: str, language: str) -> str:
+        return LanguageDictionary.get_text(key, language)
 
 class FileUtils:
     @staticmethod
