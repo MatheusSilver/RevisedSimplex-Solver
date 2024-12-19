@@ -1,5 +1,11 @@
 class LanguageDictionary:
     PORTUGUESE_DICTIONARY = {
+        "pt": "Português Brasileiro",
+        "en": "Inglês",
+        "es": "Espanhol",
+        "return_to_main_menu": "Voltar ao menu principal",
+        "solve_one": "Resolver um problema de Otimização Linear",
+        "solve_all": "Resolver todos os problemas de Otimização Linear disponíveis",
         "no_files": "Nenhum arquivo disponível para resolver.",
         "directory_not_exists": "O diretório especificado não existe.",
         "no_file_error": "Erro: Nenhum arquivo foi encontrado.",
@@ -64,4 +70,4 @@ class LanguageDictionary:
         try:
             return LanguageDictionary.LANGUAGE_REFERENCE[language][key]
         except KeyError:
-            return "[Tradução não encontrada]"
+            return f"[Tradução de {key} não encontrada]"

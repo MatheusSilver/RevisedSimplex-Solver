@@ -9,7 +9,6 @@ class UI:
     MENU_OPTIONS = ["solve_one", "solve_all", "language_menu", "exit_state"]
 
     def __init__(self):
-        self.language = "pt"
         self.__select_language()
         os.system('cls||clear')
 
@@ -25,23 +24,24 @@ class UI:
         if next_state in states:
             return states[next_state]()
         else:
-            raise ValueError(f"{next_state} {LanguageUtils.get_translated_text('invalid_state', self.language)}")
+            raise ValueError(f"{next_state} {LanguageUtils.get_translated_text('invalid_state')}")
 
 
 
     def __select_file_state(self) -> int:
         files = FileUtils.get_files(Constants.DATA_INPUT)
         if not files:
-            LanguageUtils.print_translated("no_file_error", self.language)
+            LanguageUtils.print_translated("no_file_error")
             return self.main_menu()
-        LanguageUtils.print_translated("select_file_intro", self.language)
+        LanguageUtils.print_translated("select_file_intro")
 
-        file_options = {file: os.path.basename(file) for file in files}
+        file_options = {os.path.basename(file):file  for file in files}
         file_list = list(file_options.keys())
         selected_file = self.__select_option(file_list, "select_file_options", False)
-        problem = RevisedSimplex(selected_file)
+        file_path = file_options[selected_file]
+        problem = RevisedSimplex(file_path)
         valid_yes = ["s", "y", "yes", "sim"]
-        show_steps = input(LanguageDictionary.get_text("show_steps", self.language)).strip().lower()
+        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower()
         problem.solve(show_steps in valid_yes)
 
         return self.main_menu()
@@ -50,9 +50,9 @@ class UI:
     def __select_method_state(self) -> int:
         problem_list = FileUtils.get_files(Constants.DATA_INPUT)
         if not problem_list:
-            LanguageUtils.print_translated("no_file_error", self.language)
+            LanguageUtils.print_translated("no_file_error")
             return self.main_menu()
-        LanguageUtils.print_translated("select_method_intro", self.language)
+        LanguageUtils.print_translated("select_method_intro")
 
 
 
@@ -62,24 +62,25 @@ class UI:
 
 
     def __exit_state(self) -> int:
-        LanguageUtils.print_translated("exit_state", self.language)
+        LanguageUtils.print_translated("exit_state")
         return 0
 
     def main_menu(self) -> int:
-        LanguageUtils.print_translated("main_menu", self.language)
-        selected_option = self.__select_option(self.MENU_OPTIONS, LanguageUtils.get_translated_text("number_to_do", self.language))
+        LanguageUtils.print_translated("main_menu")
+        selected_option = self.__select_option(self.MENU_OPTIONS, LanguageUtils.get_translated_text("number_to_do"))
         selected_option = self.__switch_menu(selected_option)
         return selected_option
 
     def __select_language(self) -> None:
-        LanguageUtils.print_translated("language_menu", self.language)
+        LanguageUtils.print_translated("language_menu")
         language_keys = list(LanguageDictionary.LANGUAGE_REFERENCE.keys())
-        self.language = self.__select_option(language_keys, LanguageUtils.get_translated_text("language_options", self.language))
+        new_language = self.__select_option(language_keys, LanguageUtils.get_translated_text("language_options"))
+        LanguageUtils.set_language(new_language)
 
     def __select_option(self, options: list, option_detail: str, should_translate:bool = True) -> str:
         for index, key in enumerate(options, start=1):
             if should_translate:
-                print(f"{index} - {LanguageUtils.get_translated_text(key, self.language)}")
+                print(f"{index} - {LanguageUtils.get_translated_text(key)}")
             else:
                 print(f"{index} - {key}")
         while True:
@@ -90,6 +91,6 @@ class UI:
 
 
                 else:
-                    print(f"{LanguageUtils.get_translated_text('invalid_choice', self.language)} {len(options)}")
+                    print(f"{LanguageUtils.get_translated_text('invalid_choice')} {len(options)}")
             except ValueError:
-                LanguageUtils.print_translated("invalid_option_error", self.language)
+                LanguageUtils.print_translated("invalid_option_error")

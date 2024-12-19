@@ -9,7 +9,7 @@ class FormatUtils:
     SPECIAL_SIMBOLS = ["<=", ">=", "=", "+", "-"]
 
     @staticmethod
-    def string_to_array(string: str, variables_order: list) -> np.ndarray[np.float64]:
+    def string_to_array(string: str, variables_order: list) -> np.array:
         np_array = np.empty((len(variables_order)))
         for idx, var in enumerate(variables_order):
             np_array[idx] = FormatUtils._read_number(string, var)
@@ -21,18 +21,17 @@ class FormatUtils:
     def get_variables_vector(string):
         variables = []
 
-        curIndex = 0
-        stringList = string.split(" ")
-        for term in stringList:
+        string_list = string.split(" ")
+        for term in string_list:
             if term in FormatUtils.SPECIAL_SIMBOLS or term.startswith("max") or term.startswith("min"):
                 continue
-            charIndex = 0
-            while charIndex < len(term):
-                if term[charIndex].isdigit():
-                    charIndex += 1
+            char_index = 0
+            while char_index < len(term):
+                if term[char_index].isdigit():
+                    char_index += 1
                 else:
                     break
-            variable = term[charIndex:]
+            variable = term[char_index:]
             if variable not in variables and not variable == "":
                 variables.append(variable)
 
@@ -59,38 +58,47 @@ class FormatUtils:
 
 
     @staticmethod
-    def format_file(input: str) -> list:
-        input = input.split('\n')
+    def format_file(file_content: str) -> list:
+        file_content = file_content.split('\n')
 
-        clearedFile = []
+        cleared_file = []
 
-        for line in input:
-            if (not line.startswith("#") and len(line) > 3):
+        for line in file_content:
+            if not line.startswith("#") and len(line) > 3:
                 line = line.strip().split("#")[0]
-                if (line not in clearedFile):
-                    clearedFile.append(line)
+                if line not in cleared_file:
+                    cleared_file.append(line)
 
-        return clearedFile
+        return cleared_file
 
 class LanguageUtils:
+    __language = "pt"
 
     @staticmethod
-    def print_translated(key: str, language: str) -> None:
-        print(LanguageUtils.get_translated_text(key, language))
+    def get_language() -> str:
+        return LanguageUtils.__language
+
+    # Setter para __language
+    @staticmethod
+    def set_language(language: str) -> None:
+        if language not in LanguageDictionary.LANGUAGE_REFERENCE:
+            error_message = LanguageUtils.get_translated_text(
+                "language_not_found_error") + f"{', '.join(LanguageDictionary.LANGUAGE_REFERENCE.keys())}"
+            raise ValueError(error_message)
+        LanguageUtils.__language = language
 
     @staticmethod
-    def get_translated_text(key: str, language: str) -> str:
-        return LanguageDictionary.get_text(key, language)
+    def print_translated(key: str) -> None:
+        print(LanguageUtils.get_translated_text(key))
+
+    @staticmethod
+    def get_translated_text(key: str) -> str:
+        return LanguageDictionary.get_text(key, LanguageUtils.__language)
 
 class FileUtils:
     @staticmethod
     def get_files(directory: str) -> list:
-        try:
-            files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
-            if not files:
-                print(self.__translate("No files available to solve."))
-            return files
-        except FileNotFoundError:
-            # todo: Implementar o método de tradutor com duas partes uma pra garantir que existe e a outra
-            # directory not exists
-            return []
+        files = [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+        if not files:
+            LanguageUtils.print_translated("no_files_to_solve_error")
+        return files

@@ -17,7 +17,8 @@ class Main:
 
     @staticmethod
     def __check_directory() -> None:
-        default_problem = """max z = 3x + 5y
+        default_problem = """max 3x + 5y
+#sujeito a:
 x + y <= 4
 2x + 3y <= 9
 x, y >= 0"""

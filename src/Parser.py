@@ -33,7 +33,8 @@ class FileParser:
     def _read_problem(self):
         directory = os.path.dirname(self.filename)
         if not os.path.exists(directory):
-            raise FileNotFoundError(f"File {directory} does not exist")
+            error_message = f"File {directory} does not exist"
+            raise FileNotFoundError(error_message)
 
         if not os.path.exists(self.filename):
             raise FileNotFoundError
