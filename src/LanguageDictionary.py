@@ -23,6 +23,12 @@ class LanguageDictionary:
     }
 
     ENGLISH_DICTIONARY = {
+        "pt": "Brazilian Portuguese",
+        "en": "English",
+        "es": "Spanish",
+        "return_to_main_menu": "Return to main menu",
+        "solve_one": "Solve a Linear Optimization problem",
+        "solve_all": "Solve all available Linear Optimization problems",
         "no_files": "No files available to solve.",
         "directory_not_exists": "The specified directory does not exist.",
         "no_file_error": "Error: No file was found.",
@@ -40,6 +46,12 @@ class LanguageDictionary:
     }
 
     SPANISH_DICTIONARY = {
+        "pt": "Portugués Brasileño",
+        "en": "Inglés",
+        "es": "Español",
+        "return_to_main_menu": "Volver al menú principal",
+        "solve_one": "Resolver un problema de Optimización Lineal",
+        "solve_all": "Resolver todos los problemas de Optimización Lineal disponibles",
         "no_files": "No hay archivos disponibles para resolver.",
         "directory_not_exists": "El directorio especificado no existe.",
         "no_file_error": "Error: No se encontró ningún archivo.",
