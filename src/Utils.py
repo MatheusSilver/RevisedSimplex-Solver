@@ -27,7 +27,7 @@ class FormatUtils:
                 continue
             char_index = 0
             while char_index < len(term):
-                if term[char_index].isdigit():
+                if term[char_index].isdigit() or term[char_index] in FormatUtils.SPECIAL_SIMBOLS:
                     char_index += 1
                 else:
                     break
@@ -44,7 +44,9 @@ class FormatUtils:
         if variable_index == -1:
             return "0"
         half_expression = expression[:variable_index].split(" ")[-2:]
-        if not half_expression[-1].isdigit():
+        if half_expression[-1] == "-":
+            value = -1
+        elif not half_expression[-1].isdigit():
             value = 1
         else:
             value = half_expression[-1]
