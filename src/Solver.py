@@ -109,7 +109,7 @@ class RevisedSimplex:
         return {variables_list[i]: self.variable_values[i] for i in range(len(variables_list))}
 
     def __solver_loop(self, basic_matrix: np.ndarray[np.float64], basic_indexes: list[int],
-                      non_basic_indexes: list[int], profit_vector: np.ndarray[np.float64],
+                      non_basic_indexes: list[int], profit_vector: np.array(np.float64),
                       restrictions_vector: np.ndarray[np.float64], is_phase_one: bool, show_steps: bool = False) -> int:
 
         restrictions_vector = restrictions_vector.reshape(-1, 1)
@@ -194,7 +194,7 @@ class RevisedSimplex:
         return int(min_index)
 
     @staticmethod
-    def __get_positive_pivot(ratios: np.ndarray[np.float64], show_steps: bool = False) -> int:
+    def __get_positive_pivot(ratios: np.array(np.float64), show_steps: bool = False) -> int:
         positive_indexes = np.where(ratios > 0)[0]
         if positive_indexes.size == 0:
             return -1

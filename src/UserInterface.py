@@ -77,7 +77,8 @@ class UI:
         new_language = self.__select_option(language_keys, LanguageUtils.get_translated_text("language_options"))
         LanguageUtils.set_language(new_language)
 
-    def __select_option(self, options: list, option_detail: str, should_translate:bool = True) -> str:
+    @staticmethod
+    def __select_option(options: list, option_detail: str, should_translate:bool = True) -> str:
         for index, key in enumerate(options, start=1):
             if should_translate:
                 print(f"{index} - {LanguageUtils.get_translated_text(key)}")
