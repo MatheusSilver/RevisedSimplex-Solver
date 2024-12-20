@@ -66,8 +66,9 @@ class FormatUtils:
         cleared_file = []
 
         for line in file_content:
-            if not line.startswith("#") and len(line) > 3:
-                line = line.strip().split("#")[0]
+            line = line.strip()
+            if not line.startswith("#") and len(line) > 1:
+                line = line.split("#")[0]
                 if line not in cleared_file:
                     cleared_file.append(line)
 
