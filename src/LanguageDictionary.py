@@ -68,7 +68,6 @@ class LanguageDictionary:
         "invalid_option_error": "Error: Entrada inválida. Por favor, ingrese un número válido."
     }
 
-    # Referência das linguagens disponíveis
     LANGUAGE_REFERENCE = {
         "pt": PORTUGUESE_DICTIONARY,
         "en": ENGLISH_DICTIONARY,

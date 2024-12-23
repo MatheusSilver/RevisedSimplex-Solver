@@ -19,7 +19,6 @@ class FileParser:
         objective_function = FormatUtils.string_to_array(objective_expression, lp_variables)
         restrictions_vector = self._get_restrictions(lp_problem[1:-1])
         restriction_simbols = self._get_restrictions_symbols(lp_problem[1:-1])
-        inferior_bound, superior_bound = self._parse_bounds(lp_problem[-1], lp_variables)
 
         return {
             "lp_variables": lp_variables,
@@ -28,59 +27,7 @@ class FileParser:
             "objective_function": objective_function,
             "restrictions_vector": restrictions_vector,
             "symbols": restriction_simbols,
-            "inferior_boundaries": inferior_bound,
-            "superior_boundaries": superior_bound
         }
-
-    def _parse_bounds(self, bounds_line: str, lp_variables: list):
-        n_vars = len(lp_variables)
-        lower_bounds = np.zeros(n_vars, dtype=np.float64)
-        upper_bounds = np.full(n_vars, np.inf, dtype=np.float64)
-
-        if not self.__have_constraints(bounds_line):
-            return lower_bounds, upper_bounds
-
-        variables_boundaries = bounds_line.split(",")
-        for variable_bound in variables_boundaries:
-            lower_bound = 0
-            upper_bound = np.inf
-            if ">=" in variable_bound and not "<=" in variable_bound:
-                expression_terms = variable_bound.split(">=")
-                if len(expression_terms) <= 2:
-                    variable, lower_bound = expression_terms
-                    lower_bound = lower_bound.strip()
-                else:
-                    upper_bound = expression_terms[0].strip()
-                    variable = expression_terms[1]
-                    lower_bound = expression_terms[2].strip()
-            elif "<=" in variable_bound and not ">=" in variable_bound:
-                expression_terms = variable_bound.split("<=")
-                if len(expression_terms) <= 2:
-                    variable, upper_bound = expression_terms
-                    upper_bound = upper_bound.strip()
-                else:
-                    lower_bound = expression_terms[0].strip()
-                    variable = expression_terms[1]
-                    upper_bound = expression_terms[2].strip()
-
-            variable = variable.strip()
-            lower_bounds[lp_variables.index(variable)] = np.float64(lower_bound)
-            upper_bounds[lp_variables.index(variable)] = np.float64(upper_bound)
-
-        return lower_bounds, upper_bounds
-
-
-
-    def __have_constraints(self, constraints_line: str) -> bool:
-        lower_constraints = constraints_line.split(">=")
-        upper_constraints = constraints_line.split("<=")
-        if len(lower_constraints) <= 2 and len(upper_constraints) <= 2 and lower_constraints[1].strip() == "0":
-            return False
-        else:
-            return True
-
-
-
 
     def _read_problem(self):
         directory = os.path.dirname(self.filename)

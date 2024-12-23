@@ -81,7 +81,6 @@ class LanguageUtils:
     def get_language() -> str:
         return LanguageUtils.__language
 
-    # Setter para __language
     @staticmethod
     def set_language(language: str) -> None:
         if language not in LanguageDictionary.LANGUAGE_REFERENCE:
