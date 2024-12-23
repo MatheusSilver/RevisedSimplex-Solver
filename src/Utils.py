@@ -51,7 +51,7 @@ class FormatUtils:
         else:
             value = half_expression[-1]
         if len(half_expression) >= 2 and half_expression[-2] == "-":
-            value = "-" + value
+            value = -value
         return value
 
 
