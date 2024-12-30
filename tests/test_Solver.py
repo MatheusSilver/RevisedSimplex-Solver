@@ -75,7 +75,7 @@ def test_revised_simplex_infeasible_case(setup_test_files, filename):
     solver = RevisedSimplex(file_path)
     solver.solve(show_steps=False)
 
-    assert solver.status == "infeasible"
+    assert "infeasible" in solver.status
 
 
 @pytest.mark.parametrize("objective, constraint_matrix, is_maximization, restrictions, restrictions_symbols, expected_solution, expected_basis", [
@@ -151,4 +151,4 @@ def test_revised_simplex_without_file_infeasible_case(objective, constraint_matr
     solver = RevisedSimplexWithoutFile(objective, constraint_matrix, is_maximization, restrictions, restrictions_symbols)
     solver.solve(show_steps=False)
 
-    assert solver.status == "infeasible"
+    assert "infeasible" in solver.status

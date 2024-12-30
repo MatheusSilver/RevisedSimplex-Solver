@@ -39,10 +39,10 @@ class UI:
         file_list = list(file_options.keys())
         selected_file = self.__select_option(file_list, "select_file_options", False)
         file_path = file_options[selected_file]
-        problem = RevisedSimplex(file_path)
         valid_yes = ["s", "y", "yes", "sim"]
-        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower()
-        problem.solve(show_steps in valid_yes)
+        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower() in valid_yes
+        problem = RevisedSimplex(file_path, show_steps, None)
+        problem.solve(show_steps)
 
         return self.main_menu()
 

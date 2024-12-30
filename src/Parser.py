@@ -11,7 +11,6 @@ class FileParser:
     def parse_file(self):
         lp_problem = self._read_problem()
         lp_problem = FormatUtils.format_file(lp_problem)
-
         lp_variables = self.__get_lp_variables(lp_problem[:-1])
         constraint_matrix = self.__setup_constraint_matrix(lp_problem[1:-1], lp_variables)
         is_maximization = self.__check_maximization(lp_problem[0])
