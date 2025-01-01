@@ -37,7 +37,7 @@ class UI:
 
         file_options = {os.path.basename(file):file  for file in files}
         file_list = list(file_options.keys())
-        selected_file = self.__select_option(file_list, "select_file_options", False)
+        selected_file = self.__select_option(file_list, LanguageUtils.get_translated_text("select_file_options"), False)
         file_path = file_options[selected_file]
         valid_yes = ["s", "y", "yes", "sim"]
         show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower() in valid_yes

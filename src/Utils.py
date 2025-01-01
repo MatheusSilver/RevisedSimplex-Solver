@@ -121,7 +121,7 @@ class LatexUtils:
             return value
         try:
             value_to_check = float(value)
-            if value_to_check % 1 != 0:  # Verifica se o número é decimal
+            if value_to_check % 1 != 0:
                 fraction = Fraction(value_to_check).limit_denominator()
                 return f"\\frac{{{fraction.numerator}}}{{{fraction.denominator}}}"
             else:
@@ -155,10 +155,9 @@ class LatexUtils:
     def format_matrix(matrix: np.ndarray) -> str:
         result = r"\begin{bmatrix}"
 
-        # Verifica se a matriz é 1D (vetor) ou 2D
-        if matrix.ndim == 1:  # Caso de um vetor
+        if matrix.ndim == 1:
             result += " & ".join(LatexUtils.format_value(str(x)) for x in matrix) + r" \\"
-        else:  # Caso de uma matriz 2D
+        else:
             for i in range(len(matrix)):
                 for j in range(len(matrix[i])):
                     result += f"{LatexUtils.format_value(str(matrix[i][j]))}"
@@ -186,16 +185,15 @@ class LatexUtils:
 
         variables_list = LatexUtils.format_variables(lp_variables)
 
-        max_or_min = "max" if is_maximization else "min" #maximize_text ou minimize_text
+        max_or_min = "maximize_text" if is_maximization else "minimize_text"
+        max_or_min = LanguageUtils.get_translated_text(max_or_min)
 
         content = r"\begin{align*}" + "\n"
 
-        objective = ""
         objective = LatexUtils.format_expression(variables_list, objective_function)
         content += rf"\text{{{max_or_min}}} \quad & {objective} \\ " + "\n"
 
-        # Restrições
-        content += r"\text{sujeito a:} \quad & \\" + "\n" #subject_to_text
+        content += r"\text{"+LanguageUtils.get_translated_text("subject_to_text")+r"} \quad & \\" + "\n"
         for row, symbol, restriction_value in zip(constraint_matrix, symbols, restrictions_vector):
             constraint_expression = LatexUtils.format_expression(variables_list, row, symbol, restriction_value)
             content += rf"\quad & {constraint_expression} \\ " + "\n"
@@ -209,7 +207,6 @@ class LatexUtils:
                 non_negativity += " \geq 0"
         content += non_negativity + "\n"
 
-        # Fechando o ambiente align*
         content += r"\end{align*}" + "\n"
 
         return content

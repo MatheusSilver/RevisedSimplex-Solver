@@ -9,8 +9,8 @@ class LanguageDictionary:
         "no_files": "Nenhum arquivo disponível para resolver.",
         "directory_not_exists": "O diretório especificado não existe.",
         "no_file_error": "Erro: Nenhum arquivo foi encontrado.",
-        "select_file_intro": "Por favor, selecione o arquivo que deseja resolver:",
-        "select_file_options": "Digite o número correspondente ao arquivo:",
+        "select_file_intro": "Por favor, selecione o arquivo que deseja resolver: ",
+        "select_file_options": "Digite o número correspondente ao arquivo: ",
         "show_steps": "Deseja visualizar os passos da resolução? (s/n): ",
         "exit_state": "Encerrando o programa...",
         "main_menu": "Selecione uma opção",
@@ -34,6 +34,7 @@ class LanguageDictionary:
         "initial_basic_non_basic_definition": "Começamos definindo nossas variáveis básicas e não básicas por $x_b$ e $x_n$, seguindo a lógica de:",
         "artificial_basis_definition": "Se a linha da matriz possui uma variável artificial, então adicionamos a variável artificial ao conjunto de variáveis básicas, e a variável de folga no conjunto das não básicas",
         "following_bases_text": "Fazendo isso, encontramos as seguintes bases:",
+
         "infeasible/phase_1_text": "Ao finalizarmos o processo da fase 1, não foi possível remover as variáveis artificiais, com isso, como não há uma solução sem elas, logo podemos concluir que o problema é inviável.",
         "infeasible/phase_2_text": "A solução ótima encontrada possui valores negativos para as variáveis, com isto, podemos concluir que o problema é inviável.",
         "phase_1_success_text": "Com isso, concluimos a fase 1, e obtemos a seguinte base inicial e com os seguintes valores:",
@@ -46,24 +47,23 @@ class LanguageDictionary:
         "min_text": "Mínimo",
         "conclusion_text": "Conclusão",
         "optimal_solution_text": "Com isso, concluimos a fase 2, e obtemos a solução ótima abaixo:",
+        "unbounded_solution_text": "Como vimos que na última iteração do Simplex, todos os valores de $y$ eram negativos, conclúimos que a variável não básica que estará entrando poderá crescer indefinidamente, e portanto, teremos uma solução ilimitada.",
         "numerical_solution_text": "Podemos calcular a solução correspondente ao <x1>, multiplicando os valores das variáveis, pelo vetor de custo, e obtemos que o resultado ótimo atingível do problema é <x1> = $<x2>$",
         "degenerate_solution": "Observe que a solução é degenerada, isto é, se tivéssemos tomado escolhas diferentes nas iterações <x1>, de forma a obtermos o mesmo resultado <x2>, mas com outro conjunto de variáveis básicas.",
-        "maximum_iterations_exceeded": "Erro: Número máximo de interações atingido",
+        "maximum_iterations_exceeded_text": "Erro: Número máximo de interações atingido",
         "iteration_text": "Iteração <x1> (<x2>)",
         "current_status_text": "Estado atual do problema:",
         "step_1_text": "Passo 1: Cálculo do vetor básico ($x_b$)",
         "step_1_details": "Invertemos a matriz básica e multiplicamos pelo vetor de restrições:",
         "step_2_text:": "Passo 2: Cálculo dos custos reduzidos ($c_r$)",
         "step_2_details": "O vetor de custos reduzidos é calculado como:",
-        "step_2_formula": "\[ c_r = c_n - (c_b \cdot B^{-1}) \]",
         "step_3_text": "Passo 3: Escolha da variável que entra na base",
         "no_negative_pivot_found_details": "Como não temos nenhum candidato a entrar na base de forma a melhorar a solução, concluimos o processo.",
         "step_4_text": "Passo 4: Calculo do vetor direção $y$",
         "step_4_details": "O vetor $y$ é calculado como:",
-        "step_4_formula": "\[ y =  B^{-1} \cdot A_n \]",
         "step_4_variable_details": "$A_n$ é o vetor coluna das restrições da variável que irá entrar na base.",
         "step_5_text": "Passo 5: Escolha da variável que sai da base",
-        "step_5_details": "Primeiro, calculamos as razões $\frac{x_b}{y}$, onde $y \geq 0$, caso contrário iremos considerar como infinitamente positivo argumentando que ele certamente não será removido da base.",
+        "step_5_details": r"Primeiro, calculamos as razões $\frac{x_b}{y}$, onde $y \geq 0$, caso contrário iremos considerar como infinitamente positivo argumentando que ele certamente não será removido da base.",
         "step_5_formula_variable": "Razões",
         "phase_1_conclusion": "Conclusão da Fase 1",
 
@@ -90,7 +90,12 @@ class LanguageDictionary:
 
         "maximize_text": "Maximizar",
         "minimize_text": "Minimizar",
-        "subject_to_text": "Sujeito a"
+        "subject_to_text": "Sujeito a",
+
+        "optimal_solution_found": "Solução ótima encontrada!",
+        "values_text": "Valores: ",
+        "basic_variables_text": "Variáveis básicas: ",
+        "simple_degenerate_text": "A solução é degenerada, isto é, pode haver mais do que um conjunto de variáveis básicas."
     }
 
     ENGLISH_DICTIONARY = {

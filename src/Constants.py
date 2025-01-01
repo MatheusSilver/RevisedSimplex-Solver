@@ -9,4 +9,4 @@ LATEX_INITIALIZATION = r"""\documentclass{article}
 \usepackage{graphicx} 
 \usepackage{xcolor} 
 
-\begin{document}""""
+\begin{document}"""
