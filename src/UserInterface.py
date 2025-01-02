@@ -2,6 +2,7 @@ import os
 
 from src.LanguageDictionary import LanguageDictionary
 import Constants
+from src.LatexWriter import LatexWriter
 from src.Utils import FileUtils, LanguageUtils
 from src.Solver import RevisedSimplex
 
@@ -19,7 +20,7 @@ class UI:
             "exit_state": self.__exit_state,
             "language_menu": self.__language_menu,
             "solve_one": self.__select_file_state,
-            "convert_all": self.__select_method_state
+            "solve_all": self.__select_method_state
         }
         if next_state in states:
             return states[next_state]()
@@ -39,8 +40,7 @@ class UI:
         file_list = list(file_options.keys())
         selected_file = self.__select_option(file_list, LanguageUtils.get_translated_text("select_file_options"), False)
         file_path = file_options[selected_file]
-        valid_yes = ["s", "y", "yes", "sim"]
-        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower() in valid_yes
+        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower() in Constants.valid_yes
         problem = RevisedSimplex(file_path, show_steps, None)
         problem.solve(show_steps)
 
@@ -52,7 +52,28 @@ class UI:
         if not problem_list:
             LanguageUtils.print_translated("no_file_error")
             return self.main_menu()
-        LanguageUtils.print_translated("select_method_intro")
+        confirmation_message = LanguageUtils.get_translated_text_variable_text("conv_all_confirmation", [str(len(problem_list))])
+        confirmation_input = input(confirmation_message).strip().lower()
+
+        if confirmation_input not in Constants.valid_yes:
+            return self.__switch_menu("main_menu")
+
+        latex_writer = LatexWriter("general")
+        problem = RevisedSimplex("", True, latex_writer)
+        for i in range(len(problem_list)):
+            problem.reload_problem(problem_list[i])
+            problem.solve(True)
+            print(LanguageUtils.get_translated_text_variable_text("exercise_solved", [ problem_list[i].split("/")[-1] ]))
+            if i < len(problem_list) - 1:
+                problem.set_next_exercise()
+            else:
+                latex_writer.close()
+        exit_message = LanguageUtils.get_translated_text("all_exercises_solved")
+        exit_input = input(exit_message).strip().lower()
+        if exit_input in Constants.valid_yes:
+            return self.__switch_menu("exit_state")
+        else:
+            return self.__switch_menu("main_menu")
 
 
 
@@ -62,7 +83,7 @@ class UI:
 
 
     def __exit_state(self) -> int:
-        LanguageUtils.print_translated("exit_state")
+        LanguageUtils.print_translated("exit_text")
         return 0
 
     def main_menu(self) -> int:
