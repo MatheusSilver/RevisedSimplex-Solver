@@ -40,7 +40,7 @@ class UI:
         file_list = list(file_options.keys())
         selected_file = self.__select_option(file_list, LanguageUtils.get_translated_text("select_file_options"), False)
         file_path = file_options[selected_file]
-        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower() in Constants.valid_yes
+        show_steps = input(LanguageUtils.get_translated_text("show_steps")).strip().lower() in Constants.VALID_YES
         problem = RevisedSimplex(file_path, show_steps, None)
         problem.solve(show_steps)
 
@@ -55,10 +55,10 @@ class UI:
         confirmation_message = LanguageUtils.get_translated_text_variable_text("conv_all_confirmation", [str(len(problem_list))])
         confirmation_input = input(confirmation_message).strip().lower()
 
-        if confirmation_input not in Constants.valid_yes:
+        if confirmation_input not in Constants.VALID_YES:
             return self.__switch_menu("main_menu")
 
-        latex_writer = LatexWriter("general")
+        latex_writer = LatexWriter(LanguageUtils.get_translated_text("general_file_id"))
         problem = RevisedSimplex("", True, latex_writer)
         for i in range(len(problem_list)):
             problem.reload_problem(problem_list[i])
@@ -70,7 +70,7 @@ class UI:
                 latex_writer.close()
         exit_message = LanguageUtils.get_translated_text("all_exercises_solved")
         exit_input = input(exit_message).strip().lower()
-        if exit_input in Constants.valid_yes:
+        if exit_input in Constants.VALID_YES:
             return self.__switch_menu("exit_state")
         else:
             return self.__switch_menu("main_menu")
@@ -94,7 +94,7 @@ class UI:
 
     def __select_language(self) -> None:
         LanguageUtils.print_translated("language_menu")
-        language_keys = list(LanguageDictionary.LANGUAGE_REFERENCE.keys())
+        language_keys = LanguageUtils.get_available_languages()
         new_language = self.__select_option(language_keys, LanguageUtils.get_translated_text("language_options"))
         LanguageUtils.set_language(new_language)
 

@@ -99,16 +99,20 @@ class LanguageUtils:
         if len(substitution_variables) == 0:
             return text
 
-        formatted_text = ""
+        formatted_text = text
         for i in range(len(substitution_variables)):
-            formatted_text = text.replace(f"<x{i+1}>", substitution_variables[i])
+            formatted_text = formatted_text.replace(f"<x{i+1}>", substitution_variables[i])
 
         return formatted_text
+
+    @staticmethod
+    def get_available_languages() -> list[str]:
+        return list(LanguageDictionary.LANGUAGE_REFERENCE.keys())
 
 
 class FileUtils:
     @staticmethod
-    def get_files(directory: str) -> list:
+    def get_files(directory: str) -> list[str]:
         files = [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
         if not files:
             LanguageUtils.print_translated("no_files_to_solve_error")
@@ -174,7 +178,7 @@ class LatexUtils:
         content = ""
         for equation in equations:
             if len(equation) == 1:
-                content += equation
+                content += str(equation)
             else:
                 content += LatexUtils.format_matrix(equation)
         return content
@@ -193,7 +197,7 @@ class LatexUtils:
         objective = LatexUtils.format_expression(variables_list, objective_function)
         content += rf"\text{{{max_or_min}}} \quad & {objective} \\ " + "\n"
 
-        content += r"\text{"+LanguageUtils.get_translated_text("subject_to_text")+r"} \quad & \\" + "\n"
+        content += r"\text{"+LanguageUtils.get_translated_text("subject_to_text")+r":} \quad & \\" + "\n"
         for row, symbol, restriction_value in zip(constraint_matrix, symbols, restrictions_vector):
             constraint_expression = LatexUtils.format_expression(variables_list, row, symbol, restriction_value)
             content += rf"\quad & {constraint_expression} \\ " + "\n"

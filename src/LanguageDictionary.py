@@ -40,7 +40,11 @@ class LanguageDictionary:
         "following_bases_text": "Fazendo isso, encontramos as seguintes bases:",
 
         "infeasible/phase_1_text": "Ao finalizarmos o processo da fase 1, observamos que não foi possível remover as variáveis artificiais, com isso, como não há uma solução sem elas, podemos concluir que o problema é inviável.",
+        "summarized/infeasible/phase_1_text": "It was not possible to remove the artificial variables, infeasible problem",
+
         "infeasible/phase_2_text": "A solução ótima encontrada possui valores negativos para as variáveis, com isto, podemos concluir que o problema é inviável.",
+        "summarized/infeasible/phase_2_text": "Solução ótima possui valores negativos, problema inviável.",
+
         "phase_1_success_text": "Com isso, concluímos a fase 1, e obtemos a seguinte base inicial com os seguintes valores:",
         "phase_1_success_details": "Como conseguimos remover todas as variáveis artificiais da base, concluímos a fase 1 com exito.",
         "phase_1_next_step": "Agora, podemos aproveitar estes resultados e retornar ao problema original.",
@@ -52,6 +56,8 @@ class LanguageDictionary:
         "conclusion_text": "Conclusão",
         "optimal_solution_text": "Com isso, concluímos a fase 2, e obtemos a solução ótima abaixo:",
         "unbounded_solution_text": "Como vimos que na última iteração do Simplex, todos os valores de $y$ eram negativos ou nulos, concluímos que a variável não básica que entrará, poderá crescer indefinidamente, e portanto, teremos uma solução ilimitada.",
+        "summarized_unbounded_text": "O problema é ilimitado",
+
         "numerical_solution_text": "Podemos calcular a solução correspondente ao <x1>, multiplicando os valores das variáveis, pelo vetor de custo, e obtemos que o resultado ótimo atingível do problema é <x1> = $<x2>$",
         "degenerate_solution": "Observe que a solução é degenerada, isto é, se tivéssemos tomado escolhas diferentes nas iterações <x1>, de forma a obtermos o mesmo resultado <x2>, mas com outro conjunto de variáveis básicas.",
         "maximum_iterations_exceeded_text": "Erro: Número máximo de iterações atingido.",
@@ -99,7 +105,9 @@ class LanguageDictionary:
         "optimal_solution_found": "Solução ótima encontrada!",
         "values_text": "Valores: ",
         "basic_variables_text": "Variáveis básicas: ",
-        "simple_degenerate_text": "A solução é degenerada, isto é, pode haver mais do que um conjunto de variáveis básicas."
+        "simple_degenerate_text": "A solução é degenerada, isto é, pode haver mais do que um conjunto de variáveis básicas.",
+        "solution_file_id": "solucao",
+        "general_file_id": "geral"
     }
 
     ENGLISH_DICTIONARY = {
@@ -143,7 +151,11 @@ class LanguageDictionary:
         "following_bases_text": "Doing this, we find the following bases:",
 
         "infeasible/phase_1_text": "When we finished the phase 1 process, we observed that it was not possible to remove the artificial variables, therefore, as there is no solution without them, we can conclude that the problem is unfeasible.",
+        "summarized/infeasible/phase_1_text": "Não foi possível remover as variáveis artificiais, problema inviável.",
+
         "infeasible/phase_2_text": "The optimal solution found has negative values for the variables, leading us to conclude that the problem is infeasible.",
+        "summarized/infeasible/phase_2_text": "Optimal solution has negative values, unfeasible problem.",
+
         "phase_1_success_text": "Thus, we conclude Phase 1 and obtain the following initial basis values:",
         "phase_1_success_details": "As we managed to remove all artificial variables from the base, we completed phase 1 successfully.",
         "phase_1_next_step": "Now, we can take advantage of these results and return to the original problem.",
@@ -155,6 +167,8 @@ class LanguageDictionary:
         "conclusion_text": "Conclusion",
         "optimal_solution_text": "Thus, we conclude Phase 2 and obtain the optimal solution below:",
         "unbounded_solution_text": "As seen in the last iteration of Simplex, all values of $y$ were negative or equal to zero, indicating that the non-basic variable entering the basis can grow indefinitely, resulting in an unbounded solution.",
+        "summarized_unbounded_text": "The problem is boundless",
+
         "numerical_solution_text": "We can calculate the corresponding solution for <x1> by multiplying the variable values by the cost vector, obtaining the optimal result <x1> = $<x2>$",
         "degenerate_solution": "Note that the solution is degenerate, meaning different choices in iterations <x1> could lead to the same result <x2> but with a different set of basic variables.",
         "maximum_iterations_exceeded_text": "Error: Maximum number of iterations reached.",
@@ -200,7 +214,9 @@ class LanguageDictionary:
         "optimal_solution_found": "Optimal solution found!",
         "values_text": "Values: ",
         "basic_variables_text": "Basic variables: ",
-        "simple_degenerate_text": "The solution is degenerate, meaning there may be more than one set of basic variables."
+        "simple_degenerate_text": "The solution is degenerate, meaning there may be more than one set of basic variables.",
+        "solution_file_id": "solution",
+        "general_file_id": "general"
     }
 
     SPANISH_DICTIONARY = {
@@ -244,7 +260,11 @@ class LanguageDictionary:
         "following_bases_text": "Haciendo esto, encontramos las siguientes bases:",
 
         "infeasible/phase_1_text": "Cuando terminamos el proceso de la fase 1, observamos que no fue posible eliminar las variables artificiales, por lo tanto, como no hay solución sin ellas, podemos concluir que el problema es inviable.",
+        "summarized/infeasible/phase_1_text": "No fue posible eliminar las variables artificiales, problema inviable.",
+        
         "infeasible/phase_2_text": "La solución óptima encontrada tiene valores negativos para las variables, lo que nos lleva a concluir que el problema es inviable.",
+        "summarized/infeasible/phase_2_text": "La solución óptima tiene valores negativos, problema inviable.",
+
         "phase_1_success_text": "Así, concluimos la Fase 1 y obtenemos los siguientes valores para base inicial:",
         "phase_1_success_details": "Como logramos eliminar todas las variables artificiales de la base, completamos la fase 1 con éxito.",
         "phase_1_next_step": "Ahora podemos aprovechar estos resultados y volver al problema original..",
@@ -256,6 +276,8 @@ class LanguageDictionary:
         "conclusion_text": "Conclusión",
         "optimal_solution_text": "Así, concluimos la Fase 2 y obtenemos la solución óptima a continuación:",
         "unbounded_solution_text": "Como se observa en la última iteración del método Simplex, todos los valores de $y$ fueron negativos o igual a cero, indicando que la variable no básica que entra en la base puede crecer indefinidamente, resultando en una solución no acotada.",
+        "summarized_unbounded_text": "El problema es ilimitado",
+
         "numerical_solution_text": "Podemos calcular la solución correspondiente para <x1> multiplicando los valores de las variables por el vector de costos, obteniendo el resultado óptimo <x1> = $<x2>$",
         "degenerate_solution": "Nota que la solución es degenerada, lo que significa que diferentes elecciones en iteraciones <x1> podrían llevar al mismo resultado <x2> pero con un conjunto diferente de variables básicas.",
         "maximum_iterations_exceeded_text": "Error: Se alcanzó el número máximo de iteraciones.",
@@ -301,7 +323,9 @@ class LanguageDictionary:
         "optimal_solution_found": "¡Solución óptima encontrada!",
         "values_text": "Valores: ",
         "basic_variables_text": "Variables básicas: ",
-        "simple_degenerate_text": "La solución es degenerada, lo que significa que puede haber más de un conjunto de variables básicas."
+        "simple_degenerate_text": "La solución es degenerada, lo que significa que puede haber más de un conjunto de variables básicas.",
+        "solution_file_id": "solucion",
+        "general_file_id": "general"
 }
 
 
