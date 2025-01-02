@@ -1,6 +1,6 @@
 # Simplex Revisado
 
-Exercício programa desenvolvido por Matheus Silveira Feitosa, email: matheus.feitosa@usp.br do Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP).
+Exercício programa desenvolvido por Matheus Silveira Feitosa do Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP).
 
 
 ## Índice 
