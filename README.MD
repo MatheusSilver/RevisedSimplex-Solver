@@ -35,9 +35,9 @@ sendo assim, na primeira execução do programa, você encontrará um exemplo de
 
 Para mais detalhes, tem mais alguns exemplos, em conftest.py
 
-Caso você esteja interessado apenas no Solver, você poderá utilizá-lo observando o exemplo na seção seguinte [exemplo-de-uso-método-manual-(sem-arquivos)]()
+Caso você esteja interessado apenas no Solver, você poderá utilizá-lo observando o exemplo na seção seguinte [Exemplo de uso manual](exemplo-de-uso-método-manual)
 
-## Exemplo de Uso - Método Manual (Sem Arquivos)
+## Exemplo de Uso - Método Manual
 
 No caso de você não desejar utilizar arquivos, o programa também permite resolver problemas diretamente. Veja abaixo um exemplo onde um problema linear é resolvido com entradas diretas utilizando a classe `RevisedSimplexWithoutFile`.
 
