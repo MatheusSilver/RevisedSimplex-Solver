@@ -1,6 +1,6 @@
 var classSolver_1_1RevisedSimplexWithoutFile =
 [
-    [ "__init__", "classSolver_1_1RevisedSimplexWithoutFile.html#a5846650ad5796bb0c73699e045add36b", null ],
+    [ "__init__", "classSolver_1_1RevisedSimplexWithoutFile.html#aeb1b8f85f4f2e88c2f3bea067c17b4b3", null ],
     [ "constraint_matrix", "classSolver_1_1RevisedSimplexWithoutFile.html#a2944b979a18b3f1e75390f49bf6ee08e", null ],
     [ "isMaximization", "classSolver_1_1RevisedSimplexWithoutFile.html#ae8b7f59a6a7e9dc4e732d6dbac4a8a1b", null ],
     [ "objective", "classSolver_1_1RevisedSimplexWithoutFile.html#af167f3309f8d871378760951961a1f8b", null ],
