@@ -6,7 +6,7 @@
 # - Entrada de dados via arquivo ou manual,
 # - Exportação dos resultados para LaTeX,
 # - Resolução em duas fases (remoção de variáveis artificiais e busca da solução ótima).
-# @author Matheus Silveira Feitosa - NUSP: 11836692
+# @author Matheus Silveira Feitosa
 # @date 10/01/2025
 
 
