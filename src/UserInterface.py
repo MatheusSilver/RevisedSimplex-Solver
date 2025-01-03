@@ -1,10 +1,10 @@
 import os
 
-from src.LanguageDictionary import LanguageDictionary
+from LanguageDictionary import LanguageDictionary
 import Constants
-from src.LatexWriter import LatexWriter
-from src.Utils import FileUtils, LanguageUtils
-from src.Solver import RevisedSimplex
+from LatexWriter import LatexWriter
+from Utils import FileUtils, LanguageUtils
+from Solver import RevisedSimplex
 
 class UI:
     MENU_OPTIONS = ["solve_one", "solve_all", "language_menu", "exit_state"]

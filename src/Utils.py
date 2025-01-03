@@ -3,7 +3,7 @@ from fractions import Fraction
 
 import numpy as np
 
-from src.LanguageDictionary import LanguageDictionary
+from LanguageDictionary import LanguageDictionary
 
 
 class FormatUtils:
@@ -141,7 +141,7 @@ class LatexUtils:
             if i < len(vector) - 1:
                 result += ", "
 
-        result += "\}"
+        result += r"\}"
         return result
 
     @staticmethod
@@ -152,7 +152,7 @@ class LatexUtils:
             if i < len(vector) - 1:
                 result += ", "
 
-        result += "\}"
+        result += r"\}"
         return result
 
     @staticmethod
@@ -202,13 +202,13 @@ class LatexUtils:
             constraint_expression = LatexUtils.format_expression(variables_list, row, symbol, restriction_value)
             content += rf"\quad & {constraint_expression} \\ " + "\n"
 
-        non_negativity = "\quad &"
+        non_negativity = r"\quad &"
         for i in range(len(variables_list)):
             non_negativity += variables_list[i]
             if (i + 1) < len(variables_list):
                 non_negativity += ", "
             else:
-                non_negativity += " \geq 0"
+                non_negativity += r" \geq 0"
         content += non_negativity + "\n"
 
         content += r"\end{align*}" + "\n"

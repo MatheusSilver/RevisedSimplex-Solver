@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from src.Utils import FormatUtils
+from Utils import FormatUtils
 
 class FileParser:
     DEFAULT_RESTRICTIONS = [">=", "<=", "="]

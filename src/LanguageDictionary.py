@@ -92,9 +92,9 @@ class LanguageDictionary:
 
         "problem_standardization_text": "Padronização do Problema",
         "problem_standardization_details": "Para resolver o problema, precisamos primeiro escrevê-lo na forma padrão:",
-        "problem_standardization_lt": "Para uma desigualdade do tipo $\leq$, adicionamos apenas uma variável de folga.",
+        "problem_standardization_lt": r"Para uma desigualdade do tipo $\leq$, adicionamos apenas uma variável de folga.",
         "problem_standardization_eq": "Para o caso de uma igualdade $=$, adicionamos apenas uma variável artificial.",
-        "problem_standardization_gt": "Para o caso de uma desigualdade do tipo $\geq$, então subtraímos uma variável de folga e adicionamos uma variável artificial.",
+        "problem_standardization_gt": r"Para o caso de uma desigualdade do tipo $\geq$, então subtraímos uma variável de folga e adicionamos uma variável artificial.",
         "problem_standardization_after": "Após a padronização, obteremos uma matriz de restrições no seguinte formato:",
         "problem_standardization_result": "E então, podemos escrever o problema na forma padrão como:",
 
@@ -201,9 +201,9 @@ class LanguageDictionary:
 
         "problem_standardization_text": "Problem Standardization",
         "problem_standardization_details": "To solve the problem, we must first write it in standard form:",
-        "problem_standardization_lt": "For an inequality of type $\leq$, we add only a slack variable.",
+        "problem_standardization_lt": r"For an inequality of type $\leq$, we add only a slack variable.",
         "problem_standardization_eq": "For an equality $=$, we add only an artificial variable.",
-        "problem_standardization_gt": "For an inequality of type $\geq$, we subtract a slack variable and add an artificial variable.",
+        "problem_standardization_gt": r"For an inequality of type $\geq$, we subtract a slack variable and add an artificial variable.",
         "problem_standardization_after": "After standardization, we obtain a constraint matrix in the following format:",
         "problem_standardization_result": "Then, we can write the problem in standard form as:",
 
@@ -310,9 +310,9 @@ class LanguageDictionary:
 
         "problem_standardization_text": "Estandarización del problema",
         "problem_standardization_details": "Para resolver el problema, primero debemos escribirlo en forma estándar:",
-        "problem_standardization_lt": "Para una desigualdad del tipo $\leq$, agregamos solo una variable de holgura.",
+        "problem_standardization_lt": r"Para una desigualdad del tipo $\leq$, agregamos solo una variable de holgura.",
         "problem_standardization_eq": "Para una igualdad $=$, agregamos solo una variable artificial.",
-        "problem_standardization_gt": "Para una desigualdad del tipo $\geq$, restamos una variable de holgura y agregamos una variable artificial.",
+        "problem_standardization_gt": r"Para una desigualdad del tipo $\geq$, restamos una variable de holgura y agregamos una variable artificial.",
         "problem_standardization_after": "Después de la estandarización, obtenemos una matriz de restricciones en el siguiente formato:",
         "problem_standardization_result": "Entonces, podemos escribir el problema en forma estándar como:",
 

@@ -1,6 +1,6 @@
 import numpy as np
-from src.Utils import LatexUtils, LanguageUtils
-from src import Constants
+from Utils import LatexUtils, LanguageUtils
+import Constants
 
 
 class LatexWriter:
@@ -32,6 +32,7 @@ class LatexWriter:
     def write_column_identifiers(self, matrix: np.ndarray, column_labels: list[str]):
         converted_labels = LatexUtils.format_variables(column_labels)
         if matrix.ndim == 1:
+            #todo: Talvez converter os outros casos para usar o Join ao invés de is_first...
             content = r"\[\begin{array}{|" + "c|" * len(converted_labels) + "}" + "\n"
             content += r"\hline" + "\n"
             content += " & ".join(converted_labels) + r" \\" + "\n"
@@ -56,18 +57,18 @@ class LatexWriter:
         formated_identifiers = LatexUtils.format_variables(identifiers)
         content = ""
         for identifier, vector in zip(formated_identifiers, vectors):
-            content += "\[\n"
+            content += r"\["+"\n"
             content += f"{identifier}: {LatexUtils.format_string_vector(vector)}"
-            content += "\n\]"
+            content += "\n"+r"\]"
 
         self.write(content, break_line=True)
 
     def write_matrix_equations(self, symbol: str, equations: list[np.ndarray[np.float64]], result: np.ndarray):
-        content = "\[ "
+        content = r"\[ "
         content += f"{symbol} = "
         content += LatexUtils.format_matrices(equations) + " = "
         content += LatexUtils.format_matrix(result)
-        content += " \]"
+        content += r" \]"
         self.write(content, break_line=True)
 
     def break_page(self) -> None:

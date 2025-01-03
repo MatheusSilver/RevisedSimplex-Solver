@@ -12,9 +12,9 @@
 
 import numpy as np
 
-from src.LatexWriter import LatexWriter
-from src.Parser import FileParser
-from src.Utils import LatexUtils, LanguageUtils
+from LatexWriter import LatexWriter
+from Parser import FileParser
+from Utils import LatexUtils, LanguageUtils
 
 
 class RevisedSimplex:
@@ -225,7 +225,7 @@ class RevisedSimplex:
 
         if show_steps:
             self.latexWriter.break_page()
-            self.latexWriter.write("\subsection{"+LanguageUtils.get_translated_text("phase_one_text")+":}") #Phase_one_text
+            self.latexWriter.write(r"\subsection{"+LanguageUtils.get_translated_text("phase_one_text")+":}") #Phase_one_text
             self.latexWriter.write(LanguageUtils.get_translated_text("artificial_variables_removal"))
             self.latexWriter.write(LanguageUtils.get_translated_text("artificial_variables_cost"))
             self.latexWriter.write_column_identifiers(artificial_costs, self.__get_variables_list())
@@ -288,7 +288,7 @@ class RevisedSimplex:
  
         if show_steps:
             self.latexWriter.break_page()
-            self.latexWriter.write("\subsection{"+LanguageUtils.get_translated_text("phase_two_text")+":}")
+            self.latexWriter.write(r"\subsection{"+LanguageUtils.get_translated_text("phase_two_text")+":}")
         if not from_phase_one:
             self.basis = self.slack_variables.copy()
             self.non_basis = self.variables.copy()
@@ -522,11 +522,12 @@ class RevisedSimplex:
         # Atualiza os valores das variáveis e realiza a troca entre variáveis básicas e não
         # básicas, conforme indicado pelos pivôs calculados em iterações anteriores.
         
-        pivot_value = np.float64(x_b[out_index] / y[out_index])
+        pivot_value = np.float64((x_b[out_index] / y[out_index]).item()) #Ele funciona sem o .item() mas dá warnings... MUITOS WARNINGS!!!
         x_b -= pivot_value * y
         self.variable_values[in_index_non_basic] = pivot_value
         for i, basic_index in enumerate(basic_indexes):
-                self.variable_values[basic_index] = np.float64(x_b[i])
+                self.variable_values[basic_index] = np.float64(x_b[i].item())
+
 
         out_variable, in_variable = variables_list[out_index_basic], variables_list[in_index_non_basic]
         self.basis[self.basis.index(out_variable)] = in_variable

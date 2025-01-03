@@ -1,8 +1,8 @@
 import os
 
-from src import Constants
-from src.UserInterface import UI
-from src.Utils import LanguageUtils
+import Constants
+from UserInterface import UI
+from Utils import LanguageUtils
 
 
 class Main:
